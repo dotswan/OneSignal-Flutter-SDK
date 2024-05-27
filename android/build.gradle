@@ -3,8 +3,13 @@ version '5.1.6'
 
 buildscript {
     repositories {
+        flatDir{
+            dirs 'libs'
+        }
         google()
         mavenCentral()
+
+
     }
 
     dependencies {
@@ -14,8 +19,12 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        flatDir{
+            dirs 'libs'
+        }
         google()
         mavenCentral()
+
     }
 }
 
@@ -37,6 +46,11 @@ android {
     }
 }
 
+
 dependencies {
-    implementation 'com.onesignal:OneSignal:5.1.10'
+
+    compileOnly files('libs/core-original.aar')
+// implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    //api(files('libs/core-original.aar'))
+
 }
